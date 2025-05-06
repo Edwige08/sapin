@@ -129,3 +129,22 @@ const afficherSapin = (etages, hauteur_etage) => {
     return result;
 }
 console.log(afficherSapin(3, 3));
+
+// --------------------------------------------------
+console.log('---------------------------------')
+// --------------------------------------------------
+
+// ETAPE 3 : SAPIN DE SALON
+const afficherSapinAvecTronc = (etages, hauteur_etage) => {
+    let result = afficherEspace(hauteur_etage + 1 + etages) + "+";
+    for (let x = 0 ; x < etages ; x ++) {
+        for (let y = 0 + x ; y < hauteur_etage + x ; y ++) {
+            result += "\n" + afficherEspace(hauteur_etage + etages - y) + "/" + afficherEtoiles(y) + "|" + afficherEtoiles(y) + "\\";
+        }
+    }
+    result += "\n" + afficherEspace(hauteur_etage + etages) + "###";
+    result += "\n" + afficherEspace(hauteur_etage + etages) + "###";
+    result += "\n" + afficherEspace(hauteur_etage + etages) + "###";
+    return result;
+}
+console.log(afficherSapinAvecTronc(3, 3));
