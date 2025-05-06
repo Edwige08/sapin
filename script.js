@@ -62,5 +62,70 @@ console.log(afficherTriangleGauche(5));
 console.log('---------------------------------')
 // --------------------------------------------------
 
+// 1.5 Assemblage et décorations
+const afficherPointeSapin = (hauteur) => {
+    let result = afficherEspace(hauteur + 1) + "+";
+    for (let x = 0 ; x < hauteur ; x++) {
+        result += "\n" + afficherEspace(hauteur - x) + "/" + afficherEtoiles(x) + "|" + afficherEtoiles(x) + "\\";
+    }
+    return result;
+}
+console.log(afficherPointeSapin(4));
+
+// --------------------------------------------------
+console.log('---------------------------------')
+// --------------------------------------------------
+
 // ETAPE 2 : SAPIN A ETAGES
-const afficherSapin = (etages, hauteur_etage) => {}
+console.log(afficherPointeSapin(1))
+console.log(afficherPointeSapin(2))
+console.log(afficherPointeSapin(3))
+
+// --------------------------------------------------
+console.log('---------------------------------')
+// --------------------------------------------------
+
+// 2.1 Afficher un étage
+const afficherEtage1 = (hauteur, pointe_offset) => {
+    let result = "";
+    for (let x = pointe_offset ; x < pointe_offset + hauteur ; x++) {
+        result += afficherEspace(pointe_offset + hauteur - x) + "/" + afficherEtoiles(x) + "|" + afficherEtoiles(x) + "\\\n";
+    }
+    return result;
+}
+console.log(afficherEtage1(3, 0));
+console.log(afficherEtage1(3, 1));
+console.log(afficherEtage1(3, 2));
+
+// --------------------------------------------------
+console.log('---------------------------------')
+// --------------------------------------------------
+
+// 2.2 Aligner les étages
+const afficherEtage = (hauteur, pointe_offset, espacement) => {
+    let result = "";
+    for (let x = pointe_offset ; x < pointe_offset + hauteur ; x++) {
+        result += afficherEspace(pointe_offset + hauteur - x + espacement) + "/" + afficherEtoiles(x) + "|" + afficherEtoiles(x) + "\\\n";
+    }
+    return result;
+}
+console.log(afficherEtage(3, 0, 3));
+console.log(afficherEtage(3, 1, 2));
+console.log(afficherEtage(3, 2, 1));
+console.log(afficherEtage(3, 3, 0));
+
+// --------------------------------------------------
+console.log('---------------------------------')
+// --------------------------------------------------
+
+// 2.3 Factorisation
+const afficherSapin = (etages, hauteur_etage) => {
+    let result = afficherEspace(hauteur_etage + 1 + etages) + "+";
+    for (let x = 0 ; x < etages ; x ++) {
+        for (let y = 0 + x ; y < hauteur_etage + x ; y ++) {
+            result += "\n" + afficherEspace(hauteur_etage + etages - y) + "/" + afficherEtoiles(y) + "|" + afficherEtoiles(y) + "\\";
+        }
+    }
+    return result;
+}
+console.log(afficherSapin(3, 3));
