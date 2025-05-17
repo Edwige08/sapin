@@ -147,4 +147,4 @@ const afficherSapinAvecTronc = (etages, hauteur_etage) => {
     result += "\n" + afficherEspace(hauteur_etage + etages) + "###";
     return result;
 }
-console.log(afficherSapinAvecTronc(3, 3));
+console.log(afficherSapinAvecTronc(4, 3));
